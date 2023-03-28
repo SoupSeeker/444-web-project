@@ -1,0 +1,19 @@
+{
+  "name": "444project",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "description": "website for cis444 final",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "444-web-project"
+  },
+  "author": "jake tremblay",
+  "license": "ISC"
+}

@@ -18,7 +18,8 @@
 //	.then(response => console.log(response))
 //	.catch(err => console.error(err));
 
-const vader = require('vader-sentiment');
-const input = 'VADER is very smart, handsome, and funny';
-const intensity = vader.SentimentIntensityAnalyzer.polarity_scores(input);
-console.log(intensity);
+//const vader = require('vader-sentiment');
+//const input = 'VADER is very smart, handsome, and funny';
+//const intensity = vader.SentimentIntensityAnalyzer.polarity_scores(input);
+//console.log(intensity);
+//
