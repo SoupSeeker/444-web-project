@@ -1,14 +1,30 @@
 const express = require('express');
 const path = require('path');
-//const morgan = require('morgan');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
+//const morgan = require('morgan');
 const app = express();
 const port = 3000;
-
 app.use(express.static('assets'));
-
+app.use(passport.initialize());
+app.use(passport.session());
 //app.use(morgan('combined')); //for logging we can use the built in morgan middleware, turn it off when developing unless youre crazy
 
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    if (username === 'admin' && password === 'password') {
+      // If the username and password are correct, return the user object
+      return done(null, { id: 1, username: 'admin' });
+    } else {
+      // If the username and password are incorrect, return false
+      return done(null, false);
+    }
+  }
+));
+
+
+//routing endpoints
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/main.html');
 });
@@ -25,9 +41,26 @@ app.get('/news', (req, res) => {
   res.sendFile(__dirname + '/stockInf.html');
 });
 
+//listener
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

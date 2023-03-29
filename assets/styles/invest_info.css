@@ -1,0 +1,47 @@
+/* This is a CSS comment */
+nav {
+    background-color: white;
+    border-radius: 5px;
+    width: 100%;
+}
+
+body
+{
+    background-color:white;
+}
+    nav ul {
+        list-style: none;
+        padding: 5px;
+        margin: 5px;
+        text-align: center;
+    }
+
+    nav li {
+        display: inline-block;
+        font-size: 24px;
+    }
+
+    nav a {
+        color: #111111;
+    }
+
+#first {
+    padding: 10px;
+    text-align: center;
+}
+
+
+h1 {
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+#content {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: left;
+    max-width: 1000px;
+}

@@ -7,7 +7,7 @@
 //	method: 'POST',
 //	headers: {
 //		'content-type': 'application/x-www-form-urlencoded',
-//		'X-RapidAPI-Key': 'f66af50666msh7c3ae7fcc636e9dp1db22cjsn66004894965b',
+//		'X-RapidAPI-Key': '',
 //		'X-RapidAPI-Host': 'yfinance-stock-market-data.p.rapidapi.com'
 //	},
 //	body: encodedParams
@@ -17,6 +17,7 @@
 //	.then(response => response.json())
 //	.then(response => console.log(response))
 //	.catch(err => console.error(err));
+
 
 //const vader = require('vader-sentiment');
 //const input = 'VADER is very smart, handsome, and funny';
