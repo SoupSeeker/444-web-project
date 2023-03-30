@@ -1,45 +1,94 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser')
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-
+const sqlite3 = require('sqlite3').verbose();
 //const morgan = require('morgan');
+
 const app = express();
-const port = 3000;
+const port = 1337;
 app.use(express.static('assets'));
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 //app.use(morgan('combined')); //for logging we can use the built in morgan middleware, turn it off when developing unless youre crazy
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    if (username === 'admin' && password === 'password') {
-      // If the username and password are correct, return the user object
-      return done(null, { id: 1, username: 'admin' });
-    } else {
-      // If the username and password are incorrect, return false
-      return done(null, false);
-    }
-  }
-));
+let sql;
+//connect to db
+const db = new sqlite3.Database('user.db',sqlite3.OPEN_READWRITE,(err)=>{
+  if (err) return console.error(err.message);
+});
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~make user table ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//sql = `CREATE TABLE users(id INTEGER PRIMARY KEY,first_name,last_name,username,password,email)`;
+//db.run(sql);
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~dropping a table ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//db.run("DROP TABLE users");
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~inserting some user info ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//insert = `INSERT INTO users(first_name,last_name,username,password,email) VALUES (?,?,?,?,?)`;
+//db.run(
+//  insert,
+//  ["adam","smith","asmith78","test","example@gmail.com"],
+//  (err)=>{
+//  if (err) return console.error(err.message);
+//});
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~update users ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//sql = `UPDATE users SET first_name = ? WHERE id = ?`;
+//db.run(sql,['johnny',5],(err)=>{
+//  if (err) return console.error(err.message);
+//});
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~delete users ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//sql = `DELETE FROM users WHERE id = ?`;
+//db.run(sql,[3],(err)=>{
+//  if (err) return console.error(err.message);
+//});
+
+//query our users
+//sql = `SELECT * FROM users`;
+//db.all(sql,[],(err, rows)=>{
+//  if (err) return console.error(err.message);
+//  rows.forEach((row)=>{
+//    console.log(row)
+//  });
+//});
 
 //routing endpoints
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/main.html');
+  res.sendFile(__dirname + '/src/main.html');
 });
 
 app.get('/register', (req, res) => {
-  res.sendFile(__dirname + '/register.html');
+  res.sendFile(__dirname + '/src/register.html');
+});
+
+app.post('/register', (req, res) => {
+  let data = req.body;
+  res.send('Data recieved: ' + JSON.stringify(data));
 });
 
 app.get('/login', (req, res) => {
-  res.sendFile(__dirname + '/login.html');
+  res.sendFile(__dirname + '/src/login.html');
 });
 
+//TODO: add a search functinoality that generates the correct tradingview window
 app.get('/news', (req, res) => {
-  res.sendFile(__dirname + '/stockInf.html');
+  res.sendFile(__dirname + '/src/stockInf.html');
 });
+
+//TODO: we need to switch up our investing page - to -> retirement planning
+app.get('/investing', (req, res) => {
+  res.sendFile(__dirname + '/src/investing.html');
+});
+
+
+app.use(function(req, res){
+  res.sendFile(__dirname + '/src/404.html');
+});
+
 
 //listener
 app.listen(port, () => {

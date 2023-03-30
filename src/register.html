@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title> <!--TODO: change title, make up something creative -->
     <link rel="stylesheet" href="styles/register.css">  <!-- can we use some fun js libraries? anime.js or p5.js maybe-->
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <nav>
@@ -16,15 +16,20 @@
             <li><a href="#">Stats</a></li> |
             <li><a href="register">Register</a></li> |
             <li><a href="login">Login</a></li> | 
-            <li><a href="news">News</a></li>            
+            <li><a href="news">News</a></li> | 
+            <li><a href="investing"> Investing</a></li>            
         </ul>
     </nav>
     </br>
 
-    <form action="#">   <!--TODO: create a register php / js file-->
+    <form action="" method="post">
         <div>
             <h1>Register</h1>
             <hr>
+            <label for="username"><b>Username</b></label>
+            </br>
+            <input type="text" placeholder="Enter Username" name="username" id="username" required>
+            </br>         
             <label for="email"><b>Email</b></label>
             </br>
             <input type="text" placeholder="Enter Email" name="email" id="email" required>
