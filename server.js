@@ -8,6 +8,7 @@ const sqlite3 = require('sqlite3').verbose();
 
 const app = express();
 const port = 1337;
+-
 app.use(express.static('assets'));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -56,25 +57,31 @@ const db = new sqlite3.Database('user.db',sqlite3.OPEN_READWRITE,(err)=>{
 //  });
 //});
 
-//routing endpoints
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~routing below ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+//home page
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/src/main.html');
 });
 
+//sending a get request to register should just get the page
 app.get('/register', (req, res) => {
   res.sendFile(__dirname + '/src/register.html');
 });
 
+//sending a post to register (from entering form) should handle the json data, load it into user db
 app.post('/register', (req, res) => {
   let data = req.body;
   res.send('Data recieved: ' + JSON.stringify(data));
 });
 
+//TODO: create a working login with passport
 app.get('/login', (req, res) => {
   res.sendFile(__dirname + '/src/login.html');
 });
 
 //TODO: add a search functinoality that generates the correct tradingview window
+//TODO: include the vader nlp functionality + grab a few news articles from yfinance
 app.get('/news', (req, res) => {
   res.sendFile(__dirname + '/src/stockInf.html');
 });
@@ -84,11 +91,9 @@ app.get('/investing', (req, res) => {
   res.sendFile(__dirname + '/src/investing.html');
 });
 
-
 app.use(function(req, res){
   res.sendFile(__dirname + '/src/404.html');
 });
-
 
 //listener
 app.listen(port, () => {
