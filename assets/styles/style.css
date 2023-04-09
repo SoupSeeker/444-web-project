@@ -3,7 +3,11 @@ body {
   background-color: #3a3a3a;
   font-family: Arial, sans-serif;
   font-size: 16px;
-  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 nav {
@@ -39,34 +43,43 @@ nav .welcome {
   float: left;
 }
 
-div {
-  width: 100%;
-  height: 20%;
+.banner img {
+  width: 45%;
+  margin-top: 5px;
+  margin-right: 10px;
+  border-radius: 5%;
+  vertical-align: middle;
 }
 
-.banner img {
-  width: 50%;
+.banner p {
+  float: right;
 }
 
 .info {
   position: relative;
+  display: inline-block;
   background-color: #0faa55;
   text-align: center;
   padding-top: 25px;
   margin-top: 25px;
-  width: 30%;
+  width: 32%;
+  height: 5%;
   padding: 5px;
   background-color: #0faa55;
   border: 2px solid white;
   border-radius: 5px;
 }
 
-footer {
+.info p {
+  padding: 25px; 
+}
+
+.footer {
   color: #0faa55;
   background-color: lightgray;
-  padding: 20px;
+  padding: 10px;
+  margin-top: 20px;
   text-align: center;
-  position: absolute;
+  left: 0;
   bottom: 0;
-  width: 90%;
 }

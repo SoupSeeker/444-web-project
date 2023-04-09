@@ -1,33 +1,67 @@
 /* This is a CSS comment */
-nav {
-    background-color: white;
-    border-radius: 5px;
-    width: 100%;
-}
-
 body
 {
     background-color:white;
+    font-family: Arial, sans-serif;
 }
+
+nav {
+  background-color: lightgray;
+  border-radius: 5px;
+  width: 100%;
+}
+
     nav ul {
-        list-style: none;
-        padding: 5px;
-        margin: 5px;
-        text-align: center;
+      list-style: none;
+      padding: 5px;
+      margin: 5px;
+      text-align: right;
     }
 
     nav li {
-        display: inline-block;
-        font-size: 24px;
+      display: inline-block;
+      font-size: 24px;
     }
 
     nav a {
-        color: #111111;
+      color: #111111;
     }
+
+    nav a:hover{
+      color: #0faa55; /*light greenish color*/
+    }
+
+    nav .welcome {
+      color: #111111;
+      position: relative;
+      padding-left: 15px;
+      float: left;
+    }
+
+
+ul {
+    list-style: none;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+}
+
+li {
+    display: inline-block;
+    font-size: 24px;
+}
+
+a {
+    color: #111111;
+}
 
 #first {
     padding: 10px;
     text-align: center;
+}
+
+img {
+    border-radius: 5%;
 }
 
 
@@ -42,6 +76,5 @@ h1 {
     font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
-    text-align: left;
-    max-width: 1000px;
+    text-align: center;
 }
